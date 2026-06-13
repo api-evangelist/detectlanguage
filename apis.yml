@@ -1,0 +1,73 @@
+aid: detectlanguage
+name: DetectLanguage
+description: >-
+  DetectLanguage is a language detection REST API that analyzes text samples
+  and returns the identified language along with a confidence score. Supporting
+  216 languages, the API enables developers to identify languages from brief
+  phrases to full documents, with batch processing support for multiple texts in
+  a single request. It offers SDKs for Ruby, Python, Node.js, Go, Java, PHP,
+  and .NET, making integration straightforward across technology stacks.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/detectlanguage/refs/heads/main/apis.yml
+created: "2026-06-13"
+modified: "2026-06-13"
+specificationVersion: "0.19"
+tags:
+  - Language Detection
+  - Natural Language Processing
+  - Text Analysis
+  - Machine Learning
+  - Multilingual
+apis:
+  - aid: detectlanguage:detectlanguage-api
+    name: DetectLanguage API
+    description: >-
+      REST API for detecting the language of text samples. Supports single and
+      batch detection, returning language codes and confidence scores for 216
+      languages. Authentication uses Bearer token via API key.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://detectlanguage.com
+    baseURL: https://ws.detectlanguage.com/v3
+    tags:
+      - Language Detection
+      - NLP
+      - Text Analysis
+    properties:
+      - type: Documentation
+        url: https://detectlanguage.com/documentation/v3
+      - type: Plans
+        url: https://detectlanguage.com/plans
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/detectlanguage/refs/heads/main/openapi.yml
+common:
+  - type: Website
+    url: https://detectlanguage.com
+  - type: Documentation
+    url: https://detectlanguage.com/documentation/v3
+  - type: GitHubOrg
+    url: https://github.com/detectlanguage
+  - type: Pricing
+    url: https://detectlanguage.com/plans
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/detectlanguage/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/detectlanguage/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/detectlanguage/refs/heads/main/finops/finops.yml
+  - type: TermsOfService
+    url: https://detectlanguage.com/terms
+  - type: PrivacyPolicy
+    url: https://detectlanguage.com/privacy_policy
+  - type: SignUp
+    url: https://detectlanguage.com/users/sign_up
+  - type: Login
+    url: https://detectlanguage.com/users/sign_in
+  - type: Contact
+    url: https://detectlanguage.com/contact
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

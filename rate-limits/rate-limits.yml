@@ -1,0 +1,45 @@
+rateLimits:
+  description: >-
+    DetectLanguage enforces daily request and data volume limits per API key
+    based on the subscribed plan. Limits reset at midnight UTC each day. The
+    current usage and remaining allowances can be queried via the account status
+    endpoint at https://ws.detectlanguage.com/v3/account/status.
+  resetPeriod: daily
+  resetTime: midnight UTC
+  statusEndpoint: https://ws.detectlanguage.com/v3/account/status
+  limits:
+    - plan: Free
+      requestsPerDay: 1000
+      dataPerDay: 1 MB
+    - plan: Basic
+      requestsPerDay: 100000
+      dataPerDay: 20 MB
+    - plan: Plus
+      requestsPerDay: 1000000
+      dataPerDay: 200 MB
+    - plan: Premium
+      requestsPerDay: 10000000
+      dataPerDay: 2 GB
+    - plan: Premium 40M
+      requestsPerDay: 40000000
+      dataPerDay: 8 GB
+    - plan: Premium 100M
+      requestsPerDay: 100000000
+      dataPerDay: 20 GB
+  notes:
+    - >-
+      Rate limits are enforced at the API key level. Each account has one active
+      API key tied to its subscription plan.
+    - >-
+      Batch detection requests (using the /v3/detect-batch endpoint) count as
+      multiple requests equal to the number of texts in the batch.
+    - >-
+      The account status endpoint returns daily_requests_limit,
+      daily_bytes_limit, requests_today, and bytes_today fields to help
+      developers monitor consumption.
+    - >-
+      Exceeding the daily limit will result in request rejection until the
+      counter resets at midnight UTC.
+    - >-
+      Users can upgrade their plan at any time to increase limits. Downgrading
+      is also supported.

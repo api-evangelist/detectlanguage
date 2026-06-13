@@ -1,0 +1,81 @@
+finops:
+  description: >-
+    DetectLanguage uses a flat monthly subscription model with tiered pricing
+    based on daily request volume and data throughput. All plans are billed
+    monthly, and unused capacity does not roll over. Customers can upgrade or
+    downgrade at any time. For usage beyond 100 million requests per day, custom
+    enterprise pricing is available.
+  model: subscription
+  billingCycle: monthly
+  currency: USD
+  tiers:
+    - name: Free
+      monthlyPrice: 0.00
+      requestsPerDay: 1000
+      dataPerDay: 1 MB
+      effectiveCostPerThousandRequests: 0.00
+
+    - name: Basic
+      monthlyPrice: 5.00
+      requestsPerDay: 100000
+      dataPerDay: 20 MB
+      effectiveCostPerThousandRequests: 0.0017
+      notes: "$5/month ÷ (100,000 req/day × 30 days / 1000)"
+
+    - name: Plus
+      monthlyPrice: 15.00
+      requestsPerDay: 1000000
+      dataPerDay: 200 MB
+      effectiveCostPerThousandRequests: 0.0005
+      notes: "$15/month ÷ (1,000,000 req/day × 30 days / 1000)"
+
+    - name: Premium
+      monthlyPrice: 40.00
+      requestsPerDay: 10000000
+      dataPerDay: 2 GB
+      effectiveCostPerThousandRequests: 0.000133
+      notes: "$40/month ÷ (10,000,000 req/day × 30 days / 1000)"
+
+    - name: Premium 40M
+      monthlyPrice: 100.00
+      requestsPerDay: 40000000
+      dataPerDay: 8 GB
+      effectiveCostPerThousandRequests: 0.0000833
+      notes: "$100/month ÷ (40,000,000 req/day × 30 days / 1000)"
+
+    - name: Premium 100M
+      monthlyPrice: 200.00
+      requestsPerDay: 100000000
+      dataPerDay: 20 GB
+      effectiveCostPerThousandRequests: 0.0000667
+      notes: "$200/month ÷ (100,000,000 req/day × 30 days / 1000)"
+
+    - name: Custom
+      monthlyPrice: null
+      requestsPerDay: custom
+      dataPerDay: custom
+      notes: Contact DetectLanguage sales for pricing above 100M requests/day
+
+  costOptimizationTips:
+    - >-
+      Use batch detection (POST /v3/detect-batch) to process multiple texts in a
+      single HTTP request, reducing overhead and maximizing throughput within
+      your daily request limit.
+    - >-
+      Monitor daily usage via the account status endpoint
+      (GET /v3/account/status) to avoid hitting limits unexpectedly and to right-
+      size your plan.
+    - >-
+      The Free tier (1,000 requests/day) is sufficient for development and
+      testing. Upgrade only when moving to production workloads.
+    - >-
+      Evaluate your average daily peak rather than monthly totals when selecting
+      a plan, since limits are enforced per day and do not carry over.
+    - >-
+      If your workload is bursty, the Premium tiers offer headroom well beyond
+      average daily needs, reducing the risk of throttling during spikes.
+
+  links:
+    pricing: https://detectlanguage.com/plans
+    contact: https://detectlanguage.com/contact
+    refundPolicy: https://detectlanguage.com/refund_policy

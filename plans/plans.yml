@@ -1,0 +1,137 @@
+plans:
+  - name: Free
+    description: >-
+      No-cost tier for developers to get started with language detection. Allows
+      up to 1,000 requests per day and 1 MB of data per day.
+    url: https://detectlanguage.com/plans
+    price: 0.00
+    currency: USD
+    billingCycle: monthly
+    rateLimits:
+      - type: requests
+        limit: 1000
+        period: day
+      - type: data
+        limit: 1
+        unit: MB
+        period: day
+    features:
+      - Language detection for 216 languages
+      - Confidence scoring
+      - Single and batch detection
+      - Bearer token authentication
+
+  - name: Basic
+    description: >-
+      Entry-level paid tier for small to medium applications requiring up to
+      100,000 requests per day and 20 MB of data per day.
+    url: https://detectlanguage.com/plans
+    price: 5.00
+    currency: USD
+    billingCycle: monthly
+    rateLimits:
+      - type: requests
+        limit: 100000
+        period: day
+      - type: data
+        limit: 20
+        unit: MB
+        period: day
+    features:
+      - All Free tier features
+      - 100x more daily requests than Free tier
+      - Priority support
+
+  - name: Plus
+    description: >-
+      Mid-tier plan for growing applications needing up to 1 million requests
+      per day and 200 MB of data per day.
+    url: https://detectlanguage.com/plans
+    price: 15.00
+    currency: USD
+    billingCycle: monthly
+    rateLimits:
+      - type: requests
+        limit: 1000000
+        period: day
+      - type: data
+        limit: 200
+        unit: MB
+        period: day
+    features:
+      - All Basic tier features
+      - 1 million requests per day
+
+  - name: Premium
+    description: >-
+      High-volume plan for large-scale applications with up to 10 million
+      requests per day and 2 GB of data per day.
+    url: https://detectlanguage.com/plans
+    price: 40.00
+    currency: USD
+    billingCycle: monthly
+    rateLimits:
+      - type: requests
+        limit: 10000000
+        period: day
+      - type: data
+        limit: 2
+        unit: GB
+        period: day
+    features:
+      - All Plus tier features
+      - 10 million requests per day
+
+  - name: Premium 40M
+    description: >-
+      Extended premium plan for enterprise-scale applications requiring up to
+      40 million requests per day and 8 GB of data per day.
+    url: https://detectlanguage.com/plans
+    price: 100.00
+    currency: USD
+    billingCycle: monthly
+    rateLimits:
+      - type: requests
+        limit: 40000000
+        period: day
+      - type: data
+        limit: 8
+        unit: GB
+        period: day
+    features:
+      - All Premium tier features
+      - 40 million requests per day
+
+  - name: Premium 100M
+    description: >-
+      Top-tier plan for the highest-volume enterprise applications requiring up
+      to 100 million requests per day and 20 GB of data per day.
+    url: https://detectlanguage.com/plans
+    price: 200.00
+    currency: USD
+    billingCycle: monthly
+    rateLimits:
+      - type: requests
+        limit: 100000000
+        period: day
+      - type: data
+        limit: 20
+        unit: GB
+        period: day
+    features:
+      - All Premium 40M tier features
+      - 100 million requests per day
+
+  - name: Custom
+    description: >-
+      Custom plan for organizations with requirements exceeding the standard
+      tiers. Contact the DetectLanguage team to configure a plan that meets
+      specific volume and support needs.
+    url: https://detectlanguage.com/contact
+    price: null
+    currency: USD
+    billingCycle: custom
+    features:
+      - Tailored request and data limits
+      - Custom pricing
+      - Dedicated support
