@@ -1,0 +1,42 @@
+{
+  "title": "Batch Language Detection",
+  "description": "Example of detecting languages for multiple texts in a single request using the POST /detect-batch endpoint. Each text in the input array produces a corresponding array of language candidates in the response.",
+  "request": {
+    "method": "POST",
+    "url": "https://ws.detectlanguage.com/v3/detect-batch",
+    "headers": {
+      "Authorization": "Bearer YOUR_API_KEY",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "q": [
+        "Hello world",
+        "Dolce far niente",
+        "Labas rytas"
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      [
+        {
+          "language": "en",
+          "score": 0.9098
+        }
+      ],
+      [
+        {
+          "language": "it",
+          "score": 0.5074
+        }
+      ],
+      [
+        {
+          "language": "lt",
+          "score": 0.3063
+        }
+      ]
+    ]
+  }
+}

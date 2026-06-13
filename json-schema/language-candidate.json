@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/detectlanguage/refs/heads/main/json-schema/language-candidate.json",
+  "title": "Language Candidate",
+  "description": "A detected language candidate returned by the DetectLanguage API. Contains a BCP-47 language code and a confidence score between 0 and 1.",
+  "type": "object",
+  "properties": {
+    "language": {
+      "type": "string",
+      "description": "BCP-47 language code (e.g., 'en' for English, 'it' for Italian, 'zh' for Chinese).",
+      "example": "en"
+    },
+    "score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Detection confidence score between 0 and 1. Higher values indicate higher detection accuracy.",
+      "example": 0.9098
+    }
+  },
+  "required": ["language", "score"],
+  "examples": [
+    {
+      "language": "en",
+      "score": 0.9098
+    },
+    {
+      "language": "it",
+      "score": 0.5074
+    }
+  ]
+}

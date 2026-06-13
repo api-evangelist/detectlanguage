@@ -1,0 +1,24 @@
+{
+  "title": "Account Status",
+  "description": "Example of retrieving account usage status using the GET /account/status endpoint.",
+  "request": {
+    "method": "GET",
+    "url": "https://ws.detectlanguage.com/v3/account/status",
+    "headers": {
+      "Authorization": "Bearer YOUR_API_KEY"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "date": "2018-04-07",
+      "requests": 1510,
+      "bytes": 19843,
+      "plan": "",
+      "plan_expires": null,
+      "daily_requests_limit": 0,
+      "daily_bytes_limit": 0,
+      "status": "ACTIVE"
+    }
+  }
+}

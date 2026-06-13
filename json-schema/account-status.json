@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/detectlanguage/refs/heads/main/json-schema/account-status.json",
+  "title": "Account Status",
+  "description": "Account usage status and plan information returned by the /account/status endpoint of the DetectLanguage API.",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Today's date in UTC timezone (YYYY-MM-DD format).",
+      "example": "2018-04-07"
+    },
+    "requests": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of API requests sent today.",
+      "example": 1510
+    },
+    "bytes": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of text bytes sent today.",
+      "example": 19843
+    },
+    "plan": {
+      "type": "string",
+      "description": "Plan code identifier. Empty string for the free tier.",
+      "example": ""
+    },
+    "plan_expires": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Plan expiration date (YYYY-MM-DD), or null if there is no plan or no expiry date.",
+      "example": null
+    },
+    "daily_requests_limit": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Maximum number of API requests allowed per day. 0 means the free tier daily quota applies.",
+      "example": 1000
+    },
+    "daily_bytes_limit": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Maximum number of bytes allowed per day. 0 means the free tier daily quota applies.",
+      "example": 0
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ACTIVE", "SUSPENDED"],
+      "description": "Current account status. Either ACTIVE (account is in good standing) or SUSPENDED (account has been suspended).",
+      "example": "ACTIVE"
+    }
+  },
+  "required": ["date", "requests", "bytes", "plan", "plan_expires", "daily_requests_limit", "daily_bytes_limit", "status"],
+  "examples": [
+    {
+      "date": "2018-04-07",
+      "requests": 1510,
+      "bytes": 19843,
+      "plan": "",
+      "plan_expires": null,
+      "daily_requests_limit": 0,
+      "daily_bytes_limit": 0,
+      "status": "ACTIVE"
+    }
+  ]
+}

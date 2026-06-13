@@ -40,7 +40,7 @@ apis:
         url: https://detectlanguage.com/plans
       - type: OpenAPI
         url: >-
-          https://raw.githubusercontent.com/api-evangelist/detectlanguage/refs/heads/main/openapi.yml
+          https://raw.githubusercontent.com/api-evangelist/detectlanguage/refs/heads/main/openapi/openapi.yml
 common:
   - type: Website
     url: https://detectlanguage.com

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/detectlanguage/refs/heads/main/json-schema/language.json",
+  "title": "Language",
+  "description": "A supported language entry returned by the /languages endpoint of the DetectLanguage API.",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "BCP-47 language code identifier.",
+      "example": "en"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full language name in English.",
+      "example": "English"
+    }
+  },
+  "required": ["code", "name"],
+  "examples": [
+    {
+      "code": "aa",
+      "name": "Afar"
+    },
+    {
+      "code": "ab",
+      "name": "Abkhazian"
+    },
+    {
+      "code": "en",
+      "name": "English"
+    },
+    {
+      "code": "it",
+      "name": "Italian"
+    },
+    {
+      "code": "zh",
+      "name": "Chinese"
+    }
+  ]
+}

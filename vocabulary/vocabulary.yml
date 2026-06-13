@@ -1,0 +1,112 @@
+vocabulary:
+  - term: language_detection
+    label: Language Detection
+    definition: >-
+      The process of automatically identifying the natural language (e.g., English,
+      French, Japanese) of a given text string using computational analysis.
+    related:
+      - natural_language_processing
+      - confidence_score
+
+  - term: confidence_score
+    label: Confidence Score
+    definition: >-
+      A numeric value between 0 and 1 returned by the DetectLanguage API indicating
+      how confident the system is in its language identification. A score of 1.0
+      represents 100% confidence; scores closer to 0 indicate lower certainty.
+    related:
+      - language_detection
+      - language_candidate
+
+  - term: language_candidate
+    label: Language Candidate
+    definition: >-
+      A potential language match returned by the API for a given text input,
+      consisting of a BCP-47 language code and a confidence score.
+    related:
+      - confidence_score
+      - bcp47_language_code
+
+  - term: bcp47_language_code
+    label: BCP-47 Language Code
+    definition: >-
+      A standardized tag format (IETF BCP 47) for identifying human languages.
+      Examples include "en" for English, "fr" for French, "zh" for Chinese.
+      The DetectLanguage API uses these codes in all responses.
+    related:
+      - language_candidate
+
+  - term: batch_detection
+    label: Batch Detection
+    definition: >-
+      The ability to submit multiple text strings in a single API request to
+      detect their languages simultaneously. Each text in the batch is analyzed
+      independently and counted as a separate request toward usage quotas.
+    related:
+      - language_detection
+      - single_detection
+
+  - term: single_detection
+    label: Single Detection
+    definition: >-
+      Language detection for one text string per API request, as opposed to
+      batch detection which processes multiple texts at once.
+    related:
+      - batch_detection
+      - language_detection
+
+  - term: api_key
+    label: API Key
+    definition: >-
+      A unique authentication credential assigned to each DetectLanguage account,
+      passed as a Bearer token in the HTTP Authorization header. Required for
+      all detection endpoints and the account status endpoint.
+    related:
+      - bearer_token
+
+  - term: bearer_token
+    label: Bearer Token
+    definition: >-
+      An HTTP authentication scheme in which the client includes the API key in
+      the Authorization header as "Authorization: Bearer <api-key>". Used by
+      DetectLanguage for all authenticated endpoints.
+    related:
+      - api_key
+
+  - term: daily_requests_limit
+    label: Daily Requests Limit
+    definition: >-
+      The maximum number of API requests allowed per day for a given account,
+      determined by the user's plan. A value of 0 in the account status response
+      indicates the free tier quota applies.
+    related:
+      - daily_bytes_limit
+      - account_status
+
+  - term: daily_bytes_limit
+    label: Daily Bytes Limit
+    definition: >-
+      The maximum number of bytes of text that can be submitted per day for a
+      given account, determined by the user's plan.
+    related:
+      - daily_requests_limit
+      - account_status
+
+  - term: account_status
+    label: Account Status
+    definition: >-
+      The current operational state of a DetectLanguage account. Possible values
+      are ACTIVE (the account is in good standing and can make requests) or
+      SUSPENDED (the account has been suspended and API access is blocked).
+    related:
+      - daily_requests_limit
+      - daily_bytes_limit
+
+  - term: natural_language_processing
+    label: Natural Language Processing (NLP)
+    definition: >-
+      A field of artificial intelligence focused on enabling computers to
+      understand, interpret, and generate human language. Language detection
+      is a foundational NLP task.
+    related:
+      - language_detection

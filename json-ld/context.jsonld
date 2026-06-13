@@ -1,0 +1,114 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dl": "https://detectlanguage.com/vocab#",
+
+    "DetectLanguageAPI": {
+      "@id": "dl:DetectLanguageAPI",
+      "@type": "@id"
+    },
+
+    "LanguageCandidate": {
+      "@id": "dl:LanguageCandidate",
+      "@type": "@id"
+    },
+
+    "Language": {
+      "@id": "dl:Language",
+      "@type": "@id"
+    },
+
+    "AccountStatus": {
+      "@id": "dl:AccountStatus",
+      "@type": "@id"
+    },
+
+    "language": {
+      "@id": "dl:languageCode",
+      "@type": "xsd:string",
+      "comment": "BCP-47 language code identifying the detected language."
+    },
+
+    "score": {
+      "@id": "dl:confidenceScore",
+      "@type": "xsd:float",
+      "comment": "Detection confidence score between 0 and 1."
+    },
+
+    "code": {
+      "@id": "dl:languageCode",
+      "@type": "xsd:string"
+    },
+
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+
+    "date": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:date"
+    },
+
+    "requests": {
+      "@id": "dl:requestCount",
+      "@type": "xsd:integer"
+    },
+
+    "bytes": {
+      "@id": "dl:byteCount",
+      "@type": "xsd:integer"
+    },
+
+    "plan": {
+      "@id": "dl:planCode",
+      "@type": "xsd:string"
+    },
+
+    "plan_expires": {
+      "@id": "dl:planExpires",
+      "@type": "xsd:date"
+    },
+
+    "daily_requests_limit": {
+      "@id": "dl:dailyRequestsLimit",
+      "@type": "xsd:integer"
+    },
+
+    "daily_bytes_limit": {
+      "@id": "dl:dailyBytesLimit",
+      "@type": "xsd:integer"
+    },
+
+    "status": {
+      "@id": "dl:accountStatus",
+      "@type": "xsd:string"
+    },
+
+    "q": {
+      "@id": "dl:queryText",
+      "@type": "xsd:string"
+    }
+  },
+
+  "@graph": [
+    {
+      "@id": "https://detectlanguage.com",
+      "@type": "schema:WebAPI",
+      "schema:name": "DetectLanguage API",
+      "schema:description": "Language detection REST API supporting 216 languages with single and batch text analysis.",
+      "schema:url": "https://detectlanguage.com",
+      "schema:documentation": "https://detectlanguage.com/documentation/v3",
+      "schema:version": "3",
+      "schema:provider": {
+        "@type": "schema:Organization",
+        "schema:name": "DetectLanguage",
+        "schema:url": "https://detectlanguage.com"
+      },
+      "schema:termsOfService": "https://detectlanguage.com/terms",
+      "schema:privacyPolicy": "https://detectlanguage.com/privacy_policy"
+    }
+  ]
+}

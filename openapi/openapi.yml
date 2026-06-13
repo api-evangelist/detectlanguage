@@ -1,0 +1,353 @@
+openapi: 3.1.0
+info:
+  title: DetectLanguage API
+  description: >-
+    DetectLanguage is a language detection REST API that analyzes text samples
+    and returns the identified language along with a confidence score. Supporting
+    216 languages, the API enables developers to identify languages from brief
+    phrases to full documents, with batch processing support for multiple texts
+    in a single request.
+  version: "3"
+  termsOfService: https://detectlanguage.com/terms
+  contact:
+    url: https://detectlanguage.com/contact
+  license:
+    name: Proprietary
+    url: https://detectlanguage.com/terms
+
+servers:
+  - url: https://ws.detectlanguage.com/v3
+    description: DetectLanguage API v3
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Detection
+    description: Language detection endpoints for single and batch text analysis.
+  - name: Languages
+    description: Retrieve the list of supported languages.
+  - name: Account
+    description: Account status and usage information.
+
+paths:
+  /detect:
+    post:
+      operationId: detectLanguage
+      summary: Detect language of a single text
+      description: >-
+        Analyzes a single text string and returns an array of language candidates
+        with language codes and confidence scores. Higher score means higher
+        detection confidence (0 to 1 range).
+      tags:
+        - Detection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DetectRequest'
+            examples:
+              english:
+                summary: English text detection
+                value:
+                  q: "Hello world"
+              italian:
+                summary: Italian text detection
+                value:
+                  q: "Dolce far niente"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DetectRequest'
+      responses:
+        "200":
+          description: Array of language detection candidates with scores.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LanguageCandidate'
+              examples:
+                english_result:
+                  summary: English detection result
+                  value:
+                    - language: en
+                      score: 0.9098
+                italian_result:
+                  summary: Italian detection result
+                  value:
+                    - language: it
+                      score: 0.5074
+        "401":
+          description: Unauthorized — invalid or missing API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "422":
+          description: Unprocessable Entity — missing or invalid request parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /detect-batch:
+    post:
+      operationId: detectLanguageBatch
+      summary: Detect language of multiple texts in one request
+      description: >-
+        Analyzes multiple text strings in a single API call and returns an array
+        of arrays, each containing language candidates for the corresponding
+        input text. Batch detections are counted as separate requests (e.g.,
+        3 texts = 3 requests toward your quota).
+      tags:
+        - Detection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DetectBatchRequest'
+            examples:
+              batch_example:
+                summary: Batch language detection example
+                value:
+                  q:
+                    - "Hello world"
+                    - "Dolce far niente"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DetectBatchRequest'
+      responses:
+        "200":
+          description: >-
+            Array of arrays of language detection candidates, one array per
+            input text, in the same order as the input.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/LanguageCandidate'
+              examples:
+                batch_result:
+                  summary: Batch detection result
+                  value:
+                    - - language: en
+                        score: 0.9098
+                    - - language: it
+                        score: 0.5074
+        "401":
+          description: Unauthorized — invalid or missing API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "422":
+          description: Unprocessable Entity — missing or invalid request parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /languages:
+    get:
+      operationId: listLanguages
+      summary: List all supported languages
+      description: >-
+        Returns an array of all 216 supported languages, each with a language
+        code and full language name. Authentication is not required for this
+        endpoint.
+      tags:
+        - Languages
+      security: []
+      responses:
+        "200":
+          description: Array of supported languages with codes and names.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Language'
+              examples:
+                languages_sample:
+                  summary: Sample languages list response
+                  value:
+                    - code: aa
+                      name: Afar
+                    - code: ab
+                      name: Abkhazian
+                    - code: en
+                      name: English
+                    - code: it
+                      name: Italian
+                    - code: zh
+                      name: Chinese
+
+  /account/status:
+    get:
+      operationId: getAccountStatus
+      summary: Get account usage status
+      description: >-
+        Returns current account usage statistics for the authenticated API key,
+        including the number of requests sent today, bytes processed, plan
+        details, daily limits, and account status.
+      tags:
+        - Account
+      responses:
+        "200":
+          description: Account status and usage information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountStatus'
+              examples:
+                account_active:
+                  summary: Active account status
+                  value:
+                    date: "2018-04-07"
+                    requests: 1510
+                    bytes: 19843
+                    plan: ""
+                    plan_expires: null
+                    daily_requests_limit: 0
+                    daily_bytes_limit: 0
+                    status: ACTIVE
+        "401":
+          description: Unauthorized — invalid or missing API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Pass your API key in the Authorization header as a Bearer token.
+        Example: Authorization: Bearer YOUR_API_KEY
+
+  schemas:
+    DetectRequest:
+      type: object
+      required:
+        - q
+      properties:
+        q:
+          type: string
+          description: >-
+            Text to detect the language of. Must be a valid UTF-8 encoded
+            string. Mandatory.
+          example: "Hello world"
+
+    DetectBatchRequest:
+      type: object
+      required:
+        - q
+      properties:
+        q:
+          type: array
+          description: >-
+            Array of texts to detect languages for. Each element must be a
+            valid UTF-8 encoded string. Mandatory.
+          items:
+            type: string
+          example:
+            - "Hello world"
+            - "Dolce far niente"
+
+    LanguageCandidate:
+      type: object
+      description: >-
+        A detected language candidate with a BCP-47 language code and a
+        confidence score between 0 and 1. Higher score indicates higher
+        detection accuracy.
+      properties:
+        language:
+          type: string
+          description: BCP-47 language code (e.g., "en", "it", "zh").
+          example: en
+        score:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: >-
+            Detection confidence score between 0 and 1. Higher values indicate
+            higher confidence.
+          example: 0.9098
+
+    Language:
+      type: object
+      description: A supported language with its code and full name.
+      properties:
+        code:
+          type: string
+          description: BCP-47 language code.
+          example: en
+        name:
+          type: string
+          description: Full language name in English.
+          example: English
+
+    AccountStatus:
+      type: object
+      description: Account usage status and plan information.
+      properties:
+        date:
+          type: string
+          format: date
+          description: Today's date in UTC timezone (YYYY-MM-DD).
+          example: "2018-04-07"
+        requests:
+          type: integer
+          description: Number of requests sent today.
+          example: 1510
+        bytes:
+          type: integer
+          description: Number of text bytes sent today.
+          example: 19843
+        plan:
+          type: string
+          description: Plan code identifier. Empty string for free tier.
+          example: ""
+        plan_expires:
+          type: string
+          format: date
+          nullable: true
+          description: Plan expiration date (YYYY-MM-DD), or null if no plan or no expiry.
+          example: null
+        daily_requests_limit:
+          type: integer
+          description: >-
+            Maximum number of requests allowed per day. 0 indicates unlimited
+            (for free tier this reflects the free quota).
+          example: 0
+        daily_bytes_limit:
+          type: integer
+          description: >-
+            Maximum number of bytes allowed per day. 0 indicates unlimited
+            (for free tier this reflects the free quota).
+          example: 0
+        status:
+          type: string
+          enum:
+            - ACTIVE
+            - SUSPENDED
+          description: Account status. Either ACTIVE or SUSPENDED.
+          example: ACTIVE
+
+    ErrorResponse:
+      type: object
+      description: Error response returned when a request fails.
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong.
+          example: "Unauthorized"
