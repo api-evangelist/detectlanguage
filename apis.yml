@@ -7,7 +7,7 @@ description: >-
   phrases to full documents, with batch processing support for multiple texts in
   a single request. It offers SDKs for Ruby, Python, Node.js, Go, Java, PHP,
   and .NET, making integration straightforward across technology stacks.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: >-
   https://raw.githubusercontent.com/api-evangelist/detectlanguage/refs/heads/main/apis.yml
 created: "2026-06-13"
@@ -26,7 +26,7 @@ apis:
       REST API for detecting the language of text samples. Supports single and
       batch detection, returning language codes and confidence scores for 216
       languages. Authentication uses Bearer token via API key.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://detectlanguage.com
     baseURL: https://ws.detectlanguage.com/v3
     tags:
