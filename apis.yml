@@ -62,7 +62,7 @@ common:
     url: https://detectlanguage.com/terms
   - type: PrivacyPolicy
     url: https://detectlanguage.com/privacy_policy
-  - type: SignUp
+  - type: Signup
     url: https://detectlanguage.com/users/sign_up
   - type: Login
     url: https://detectlanguage.com/users/sign_in
