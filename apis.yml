@@ -42,6 +42,10 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/detectlanguage/refs/heads/main/openapi/openapi.yml
 common:
+  - type: DomainSecurity
+    url: security/detectlanguage-domain-security.yml
+  - type: Authentication
+    url: authentication/detectlanguage-authentication.yml
   - type: Website
     url: https://detectlanguage.com
   - type: Documentation
