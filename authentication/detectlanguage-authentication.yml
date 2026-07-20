@@ -9,6 +9,6 @@ schemes:
   type: http
   scheme: bearer
   description: 'Pass your API key in the Authorization header as a Bearer token. Example: Authorization:
-    Bearer YOUR_API_KEY'
+    Bearer [example key]'
   sources:
   - openapi/openapi.yml
