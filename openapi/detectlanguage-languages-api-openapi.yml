@@ -1,0 +1,70 @@
+openapi: 3.1.0
+info:
+  title: DetectLanguage Account Languages API
+  description: DetectLanguage is a language detection REST API that analyzes text samples and returns the identified language along with a confidence score. Supporting 216 languages, the API enables developers to identify languages from brief phrases to full documents, with batch processing support for multiple texts in a single request.
+  version: '3'
+  termsOfService: https://detectlanguage.com/terms
+  contact:
+    url: https://detectlanguage.com/contact
+  license:
+    name: Proprietary
+    url: https://detectlanguage.com/terms
+servers:
+- url: https://ws.detectlanguage.com/v3
+  description: DetectLanguage API v3
+security:
+- bearerAuth: []
+tags:
+- name: Languages
+  description: Retrieve the list of supported languages.
+paths:
+  /languages:
+    get:
+      operationId: listLanguages
+      summary: List all supported languages
+      description: Returns an array of all 216 supported languages, each with a language code and full language name. Authentication is not required for this endpoint.
+      tags:
+      - Languages
+      security: []
+      responses:
+        '200':
+          description: Array of supported languages with codes and names.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Language'
+              examples:
+                languages_sample:
+                  summary: Sample languages list response
+                  value:
+                  - code: aa
+                    name: Afar
+                  - code: ab
+                    name: Abkhazian
+                  - code: en
+                    name: English
+                  - code: it
+                    name: Italian
+                  - code: zh
+                    name: Chinese
+components:
+  schemas:
+    Language:
+      type: object
+      description: A supported language with its code and full name.
+      properties:
+        code:
+          type: string
+          description: BCP-47 language code.
+          example: en
+        name:
+          type: string
+          description: Full language name in English.
+          example: English
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Pass your API key in the Authorization header as a Bearer token. Example: Authorization: Bearer YOUR_API_KEY'

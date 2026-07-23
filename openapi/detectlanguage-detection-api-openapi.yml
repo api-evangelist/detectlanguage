@@ -1,0 +1,183 @@
+openapi: 3.1.0
+info:
+  title: DetectLanguage Account Detection API
+  description: DetectLanguage is a language detection REST API that analyzes text samples and returns the identified language along with a confidence score. Supporting 216 languages, the API enables developers to identify languages from brief phrases to full documents, with batch processing support for multiple texts in a single request.
+  version: '3'
+  termsOfService: https://detectlanguage.com/terms
+  contact:
+    url: https://detectlanguage.com/contact
+  license:
+    name: Proprietary
+    url: https://detectlanguage.com/terms
+servers:
+- url: https://ws.detectlanguage.com/v3
+  description: DetectLanguage API v3
+security:
+- bearerAuth: []
+tags:
+- name: Detection
+  description: Language detection endpoints for single and batch text analysis.
+paths:
+  /detect:
+    post:
+      operationId: detectLanguage
+      summary: Detect language of a single text
+      description: Analyzes a single text string and returns an array of language candidates with language codes and confidence scores. Higher score means higher detection confidence (0 to 1 range).
+      tags:
+      - Detection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DetectRequest'
+            examples:
+              english:
+                summary: English text detection
+                value:
+                  q: Hello world
+              italian:
+                summary: Italian text detection
+                value:
+                  q: Dolce far niente
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DetectRequest'
+      responses:
+        '200':
+          description: Array of language detection candidates with scores.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LanguageCandidate'
+              examples:
+                english_result:
+                  summary: English detection result
+                  value:
+                  - language: en
+                    score: 0.9098
+                italian_result:
+                  summary: Italian detection result
+                  value:
+                  - language: it
+                    score: 0.5074
+        '401':
+          description: Unauthorized — invalid or missing API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unprocessable Entity — missing or invalid request parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /detect-batch:
+    post:
+      operationId: detectLanguageBatch
+      summary: Detect language of multiple texts in one request
+      description: Analyzes multiple text strings in a single API call and returns an array of arrays, each containing language candidates for the corresponding input text. Batch detections are counted as separate requests (e.g., 3 texts = 3 requests toward your quota).
+      tags:
+      - Detection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DetectBatchRequest'
+            examples:
+              batch_example:
+                summary: Batch language detection example
+                value:
+                  q:
+                  - Hello world
+                  - Dolce far niente
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DetectBatchRequest'
+      responses:
+        '200':
+          description: Array of arrays of language detection candidates, one array per input text, in the same order as the input.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/LanguageCandidate'
+              examples:
+                batch_result:
+                  summary: Batch detection result
+                  value:
+                  - - language: en
+                      score: 0.9098
+                  - - language: it
+                      score: 0.5074
+        '401':
+          description: Unauthorized — invalid or missing API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unprocessable Entity — missing or invalid request parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Error response returned when a request fails.
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong.
+          example: Unauthorized
+    DetectBatchRequest:
+      type: object
+      required:
+      - q
+      properties:
+        q:
+          type: array
+          description: Array of texts to detect languages for. Each element must be a valid UTF-8 encoded string. Mandatory.
+          items:
+            type: string
+          example:
+          - Hello world
+          - Dolce far niente
+    DetectRequest:
+      type: object
+      required:
+      - q
+      properties:
+        q:
+          type: string
+          description: Text to detect the language of. Must be a valid UTF-8 encoded string. Mandatory.
+          example: Hello world
+    LanguageCandidate:
+      type: object
+      description: A detected language candidate with a BCP-47 language code and a confidence score between 0 and 1. Higher score indicates higher detection accuracy.
+      properties:
+        language:
+          type: string
+          description: BCP-47 language code (e.g., "en", "it", "zh").
+          example: en
+        score:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: Detection confidence score between 0 and 1. Higher values indicate higher confidence.
+          example: 0.9098
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Pass your API key in the Authorization header as a Bearer token. Example: Authorization: Bearer YOUR_API_KEY'

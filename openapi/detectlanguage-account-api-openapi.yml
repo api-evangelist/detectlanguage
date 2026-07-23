@@ -1,0 +1,109 @@
+openapi: 3.1.0
+info:
+  title: DetectLanguage Account API
+  description: DetectLanguage is a language detection REST API that analyzes text samples and returns the identified language along with a confidence score. Supporting 216 languages, the API enables developers to identify languages from brief phrases to full documents, with batch processing support for multiple texts in a single request.
+  version: '3'
+  termsOfService: https://detectlanguage.com/terms
+  contact:
+    url: https://detectlanguage.com/contact
+  license:
+    name: Proprietary
+    url: https://detectlanguage.com/terms
+servers:
+- url: https://ws.detectlanguage.com/v3
+  description: DetectLanguage API v3
+security:
+- bearerAuth: []
+tags:
+- name: Account
+  description: Account status and usage information.
+paths:
+  /account/status:
+    get:
+      operationId: getAccountStatus
+      summary: Get account usage status
+      description: Returns current account usage statistics for the authenticated API key, including the number of requests sent today, bytes processed, plan details, daily limits, and account status.
+      tags:
+      - Account
+      responses:
+        '200':
+          description: Account status and usage information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountStatus'
+              examples:
+                account_active:
+                  summary: Active account status
+                  value:
+                    date: '2018-04-07'
+                    requests: 1510
+                    bytes: 19843
+                    plan: ''
+                    plan_expires: null
+                    daily_requests_limit: 0
+                    daily_bytes_limit: 0
+                    status: ACTIVE
+        '401':
+          description: Unauthorized — invalid or missing API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Error response returned when a request fails.
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong.
+          example: Unauthorized
+    AccountStatus:
+      type: object
+      description: Account usage status and plan information.
+      properties:
+        date:
+          type: string
+          format: date
+          description: Today's date in UTC timezone (YYYY-MM-DD).
+          example: '2018-04-07'
+        requests:
+          type: integer
+          description: Number of requests sent today.
+          example: 1510
+        bytes:
+          type: integer
+          description: Number of text bytes sent today.
+          example: 19843
+        plan:
+          type: string
+          description: Plan code identifier. Empty string for free tier.
+          example: ''
+        plan_expires:
+          type: string
+          format: date
+          nullable: true
+          description: Plan expiration date (YYYY-MM-DD), or null if no plan or no expiry.
+          example: null
+        daily_requests_limit:
+          type: integer
+          description: Maximum number of requests allowed per day. 0 indicates unlimited (for free tier this reflects the free quota).
+          example: 0
+        daily_bytes_limit:
+          type: integer
+          description: Maximum number of bytes allowed per day. 0 indicates unlimited (for free tier this reflects the free quota).
+          example: 0
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - SUSPENDED
+          description: Account status. Either ACTIVE or SUSPENDED.
+          example: ACTIVE
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Pass your API key in the Authorization header as a Bearer token. Example: Authorization: Bearer YOUR_API_KEY'
