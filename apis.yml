@@ -7,7 +7,20 @@ description: >-
   phrases to full documents, with batch processing support for multiple texts in
   a single request. It offers SDKs for Ruby, Python, Node.js, Go, Java, PHP,
   and .NET, making integration straightforward across technology stacks.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/detectlanguage.png
 url: >-
   https://raw.githubusercontent.com/api-evangelist/detectlanguage/refs/heads/main/apis.yml
 created: "2026-06-13"
@@ -20,27 +33,48 @@ tags:
   - Machine Learning
   - Multilingual
 apis:
-  - aid: detectlanguage:detectlanguage-api
-    name: DetectLanguage API
-    description: >-
-      REST API for detecting the language of text samples. Supports single and
-      batch detection, returning language codes and confidence scores for 216
-      languages. Authentication uses Bearer token via API key.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://detectlanguage.com
-    baseURL: https://ws.detectlanguage.com/v3
-    tags:
-      - Language Detection
-      - NLP
-      - Text Analysis
-    properties:
-      - type: Documentation
-        url: https://detectlanguage.com/documentation/v3
-      - type: Plans
-        url: https://detectlanguage.com/plans
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/detectlanguage/refs/heads/main/openapi/openapi.yml
+- aid: detectlanguage:detectlanguage-account-api
+  name: DetectLanguage Account API
+  description: Account status and usage information.
+  humanURL: https://detectlanguage.com
+  baseURL: https://ws.detectlanguage.com/v3
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/detectlanguage-account-api-openapi.yml
+  - type: Documentation
+    url: https://detectlanguage.com/documentation/v3
+  - type: Plans
+    url: https://detectlanguage.com/plans
+- aid: detectlanguage:detectlanguage-detection-api
+  name: DetectLanguage Detection API
+  description: Language detection endpoints for single and batch text analysis.
+  humanURL: https://detectlanguage.com
+  baseURL: https://ws.detectlanguage.com/v3
+  tags:
+  - Detection
+  properties:
+  - type: OpenAPI
+    url: openapi/detectlanguage-detection-api-openapi.yml
+  - type: Documentation
+    url: https://detectlanguage.com/documentation/v3
+  - type: Plans
+    url: https://detectlanguage.com/plans
+- aid: detectlanguage:detectlanguage-languages-api
+  name: DetectLanguage Languages API
+  description: Retrieve the list of supported languages.
+  humanURL: https://detectlanguage.com
+  baseURL: https://ws.detectlanguage.com/v3
+  tags:
+  - Languages
+  properties:
+  - type: OpenAPI
+    url: openapi/detectlanguage-languages-api-openapi.yml
+  - type: Documentation
+    url: https://detectlanguage.com/documentation/v3
+  - type: Plans
+    url: https://detectlanguage.com/plans
 common:
   - type: AgenticAccess
     url: agentic-access/detectlanguage-agentic-access.yml
