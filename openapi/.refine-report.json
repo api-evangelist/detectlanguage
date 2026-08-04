@@ -1,0 +1,18 @@
+{
+  "provider": "detectlanguage",
+  "sources": [
+    "detectlanguage-account-api-openapi.yml",
+    "detectlanguage-detection-api-openapi.yml",
+    "detectlanguage-languages-api-openapi.yml"
+  ],
+  "outputs": [
+    "detectlanguage-account-api-openapi.yml",
+    "detectlanguage-detection-api-openapi.yml",
+    "detectlanguage-languages-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
