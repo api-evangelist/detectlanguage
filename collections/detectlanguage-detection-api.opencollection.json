@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DetectLanguage Account Detection API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Detection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Detect language of a single text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://ws.detectlanguage.com/v3/detect",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Analyzes a single text string and returns an array of language candidates with language codes and confidence scores. Higher score means higher detection confidence (0 to 1 range)."
+        },
+        {
+          "info": {
+            "name": "Detect language of multiple texts in one request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://ws.detectlanguage.com/v3/detect-batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Analyzes multiple text strings in a single API call and returns an array of arrays, each containing language candidates for the corresponding input text. Batch detections are counted as separate requests (e.g., 3 texts = 3 requests toward your quota)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,119 @@
+{
+  "item": [
+    {
+      "id": "74398402-e4f9-4cff-81b5-a1dd76c820ac",
+      "name": "Languages",
+      "description": {
+        "content": "Retrieve the list of supported languages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ee1f3d76-63a9-495e-8b8a-afbab946be90",
+          "name": "List all supported languages",
+          "request": {
+            "name": "List all supported languages",
+            "description": {
+              "content": "Returns an array of all 216 supported languages, each with a language code and full language name. Authentication is not required for this endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "languages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5945d801-7b18-4917-9c28-72e15cc41d05",
+              "name": "Array of supported languages with codes and names.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "languages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"aa\",\n    \"name\": \"Afar\"\n  },\n  {\n    \"code\": \"ab\",\n    \"name\": \"Abkhazian\"\n  },\n  {\n    \"code\": \"en\",\n    \"name\": \"English\"\n  },\n  {\n    \"code\": \"it\",\n    \"name\": \"Italian\"\n  },\n  {\n    \"code\": \"zh\",\n    \"name\": \"Chinese\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://ws.detectlanguage.com/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bbcacf81-967a-4336-89db-ddf06b7f5d61",
+    "name": "DetectLanguage Account Languages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "DetectLanguage is a language detection REST API that analyzes text samples and returns the identified language along with a confidence score. Supporting 216 languages, the API enables developers to identify languages from brief phrases to full documents, with batch processing support for multiple texts in a single request.",
+      "type": "text/plain"
+    }
+  }
+}

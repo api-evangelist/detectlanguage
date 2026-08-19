@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DetectLanguage Account Languages API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Languages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all supported languages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ws.detectlanguage.com/v3/languages"
+          },
+          "docs": "Returns an array of all 216 supported languages, each with a language code and full language name. Authentication is not required for this endpoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
