@@ -30,6 +30,12 @@ tags:
   - Language Detection
   - Natural Language Processing
   - Text Analysis
+  - Machine-Learning
+  - Multilingual
+tags_raw:
+  - Language Detection
+  - Natural Language Processing
+  - Text Analysis
   - Machine Learning
   - Multilingual
 apis:
@@ -67,6 +73,8 @@ apis:
   humanURL: https://detectlanguage.com
   baseURL: https://ws.detectlanguage.com/v3
   tags:
+  - Language
+  tags_raw:
   - Languages
   properties:
   - type: OpenAPI
