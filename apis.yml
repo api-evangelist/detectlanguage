@@ -97,6 +97,14 @@ apis:
   - type: Plans
     url: https://detectlanguage.com/plans
 common:
+  - type: GitHubOrganization
+    url: https://github.com/detectlanguage
+  - type: Security
+    url: https://detectlanguage.com/documentation#security
+  - type: FAQ
+    url: https://detectlanguage.com/faq
+  - type: Regions
+    url: https://detectlanguage.com/regions
   - type: AgenticAccess
     url: agentic-access/detectlanguage-agentic-access.yml
   - type: DomainSecurity
