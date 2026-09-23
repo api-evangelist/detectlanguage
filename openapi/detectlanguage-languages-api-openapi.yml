@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: DetectLanguage Account Languages API
+  title: DetectLanguage Languages API
   description: DetectLanguage is a language detection REST API that analyzes text samples and returns the identified language along with a confidence score. Supporting 216 languages, the API enables developers to identify languages from brief phrases to full documents, with batch processing support for multiple texts in a single request.
   version: '3'
   termsOfService: https://detectlanguage.com/terms

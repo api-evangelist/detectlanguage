@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: DetectLanguage Account Detection API
+  title: DetectLanguage Detection API
   description: DetectLanguage is a language detection REST API that analyzes text samples and returns the identified language along with a confidence score. Supporting 216 languages, the API enables developers to identify languages from brief phrases to full documents, with batch processing support for multiple texts in a single request.
   version: '3'
   termsOfService: https://detectlanguage.com/terms
@@ -131,6 +131,27 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    DetectBatchRequest:
+      type: object
+      required:
+      - q
+      properties:
+        q:
+          type: array
+          description: Array of texts to detect languages for. Each element must be a valid UTF-8 encoded string. Mandatory.
+          items:
+            type: string
+          example:
+          - Hello world
+          - Dolce far niente
+    ErrorResponse:
+      type: object
+      description: Error response returned when a request fails.
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong.
+          example: Unauthorized
     LanguageCandidate:
       type: object
       description: A detected language candidate with a BCP-47 language code and a confidence score between 0 and 1. Higher score indicates higher detection accuracy.
@@ -155,27 +176,6 @@ components:
           type: string
           description: Text to detect the language of. Must be a valid UTF-8 encoded string. Mandatory.
           example: Hello world
-    ErrorResponse:
-      type: object
-      description: Error response returned when a request fails.
-      properties:
-        error:
-          type: string
-          description: Error message describing what went wrong.
-          example: Unauthorized
-    DetectBatchRequest:
-      type: object
-      required:
-      - q
-      properties:
-        q:
-          type: array
-          description: Array of texts to detect languages for. Each element must be a valid UTF-8 encoded string. Mandatory.
-          items:
-            type: string
-          example:
-          - Hello world
-          - Dolce far niente
   securitySchemes:
     bearerAuth:
       type: http
