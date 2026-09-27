@@ -43,7 +43,7 @@ tags:
   - Language Detection
   - Natural Language Processing
   - Text Analysis
-  - Machine-Learning
+  - Machine Learning
   - Multilingual
 tags_raw:
   - Language Detection
@@ -51,6 +51,7 @@ tags_raw:
   - Text Analysis
   - Machine Learning
   - Multilingual
+  - Machine-Learning
 apis:
 - aid: detectlanguage:detectlanguage-account-api
   name: DetectLanguage Account API

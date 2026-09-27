@@ -131,6 +131,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    DetectRequest:
+      type: object
+      required:
+      - q
+      properties:
+        q:
+          type: string
+          description: Text to detect the language of. Must be a valid UTF-8 encoded string. Mandatory.
+          example: Hello world
     DetectBatchRequest:
       type: object
       required:
@@ -167,15 +176,6 @@ components:
           maximum: 1
           description: Detection confidence score between 0 and 1. Higher values indicate higher confidence.
           example: 0.9098
-    DetectRequest:
-      type: object
-      required:
-      - q
-      properties:
-        q:
-          type: string
-          description: Text to detect the language of. Must be a valid UTF-8 encoded string. Mandatory.
-          example: Hello world
   securitySchemes:
     bearerAuth:
       type: http
