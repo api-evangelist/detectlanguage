@@ -52,14 +52,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response returned when a request fails.
-      properties:
-        error:
-          type: string
-          description: Error message describing what went wrong.
-          example: Unauthorized
     AccountStatus:
       type: object
       description: Account usage status and plan information.
@@ -102,6 +94,14 @@ components:
           - SUSPENDED
           description: Account status. Either ACTIVE or SUSPENDED.
           example: ACTIVE
+    ErrorResponse:
+      type: object
+      description: Error response returned when a request fails.
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong.
+          example: Unauthorized
   securitySchemes:
     bearerAuth:
       type: http

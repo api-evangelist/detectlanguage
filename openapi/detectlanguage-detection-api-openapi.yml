@@ -131,15 +131,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    DetectRequest:
-      type: object
-      required:
-      - q
-      properties:
-        q:
-          type: string
-          description: Text to detect the language of. Must be a valid UTF-8 encoded string. Mandatory.
-          example: Hello world
     DetectBatchRequest:
       type: object
       required:
@@ -153,14 +144,6 @@ components:
           example:
           - Hello world
           - Dolce far niente
-    ErrorResponse:
-      type: object
-      description: Error response returned when a request fails.
-      properties:
-        error:
-          type: string
-          description: Error message describing what went wrong.
-          example: Unauthorized
     LanguageCandidate:
       type: object
       description: A detected language candidate with a BCP-47 language code and a confidence score between 0 and 1. Higher score indicates higher detection accuracy.
@@ -176,6 +159,23 @@ components:
           maximum: 1
           description: Detection confidence score between 0 and 1. Higher values indicate higher confidence.
           example: 0.9098
+    ErrorResponse:
+      type: object
+      description: Error response returned when a request fails.
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong.
+          example: Unauthorized
+    DetectRequest:
+      type: object
+      required:
+      - q
+      properties:
+        q:
+          type: string
+          description: Text to detect the language of. Must be a valid UTF-8 encoded string. Mandatory.
+          example: Hello world
   securitySchemes:
     bearerAuth:
       type: http
