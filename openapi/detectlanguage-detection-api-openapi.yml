@@ -144,6 +144,15 @@ components:
           example:
           - Hello world
           - Dolce far niente
+    DetectRequest:
+      type: object
+      required:
+      - q
+      properties:
+        q:
+          type: string
+          description: Text to detect the language of. Must be a valid UTF-8 encoded string. Mandatory.
+          example: Hello world
     LanguageCandidate:
       type: object
       description: A detected language candidate with a BCP-47 language code and a confidence score between 0 and 1. Higher score indicates higher detection accuracy.
@@ -167,15 +176,6 @@ components:
           type: string
           description: Error message describing what went wrong.
           example: Unauthorized
-    DetectRequest:
-      type: object
-      required:
-      - q
-      properties:
-        q:
-          type: string
-          description: Text to detect the language of. Must be a valid UTF-8 encoded string. Mandatory.
-          example: Hello world
   securitySchemes:
     bearerAuth:
       type: http
