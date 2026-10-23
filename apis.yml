@@ -98,6 +98,8 @@ apis:
   - type: Plans
     url: https://detectlanguage.com/plans
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/detectlanguage/overview
   - type: GitHubOrganization
     url: https://github.com/detectlanguage
   - type: Security
