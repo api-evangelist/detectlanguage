@@ -1,492 +1,458 @@
 {
+  "info": {
+    "_postman_id": "c2d7b6a0-2124-47a8-b0af-fff861cd5733",
+    "name": "DetectLanguage Detection API",
+    "description": "DetectLanguage is a language detection REST API that analyzes text samples and returns the identified language along with a confidence score. Supporting 216 languages, the API enables developers to identify languages from brief phrases to full documents, with batch processing support for multiple texts in a single request.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:00:11.000Z",
+    "updatedAt": "2026-10-22T02:00:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c2d7b6a0-2124-47a8-b0af-fff861cd5733"
+  },
   "item": [
     {
-      "id": "aa72294e-1ef4-40b2-bb83-72a9033ab687",
-      "name": "Detection",
-      "description": {
-        "content": "Language detection endpoints for single and batch text analysis.",
-        "type": "text/plain"
-      },
+      "name": "detect",
       "item": [
         {
-          "id": "878945bd-92aa-45c7-9f9c-09656c81f2d1",
           "name": "Detect language of a single text",
+          "id": "9a5d9d79-994d-4dea-96c8-fe3503f9956a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Detect language of a single text",
-            "description": {
-              "content": "Analyzes a single text string and returns an array of language candidates with language codes and confidence scores. Higher score means higher detection confidence (0 to 1 range).",
-              "type": "text/plain"
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"q\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
             },
             "url": {
+              "raw": "{{baseUrl}}/detect",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "detect"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "q",
-                  "value": "<string>",
-                  "description": "(Required) Text to detect the language of. Must be a valid UTF-8 encoded string. Mandatory."
-                }
               ]
-            }
+            },
+            "description": "Analyzes a single text string and returns an array of language candidates with language codes and confidence scores. Higher score means higher detection confidence (0 to 1 range)."
           },
           "response": [
             {
-              "id": "52733721-7f54-4c3b-9d28-4c8bf8903eb0",
+              "id": "9685cced-4fe2-4491-9f27-41520ac0c5dd",
               "name": "Array of language detection candidates with scores.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "detect"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Text to detect the language of. Must be a valid UTF-8 encoded string. Mandatory.",
-                        "type": "text/plain"
-                      },
-                      "key": "q",
-                      "value": "Hello world"
+                  "mode": "raw",
+                  "raw": "{\n  \"q\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
                     }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/detect",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "detect"
                   ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "[\n  {\n    \"language\": \"en\",\n    \"score\": 0.9098\n  }\n]",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "[\n  {\n    \"language\": \"<string>\",\n    \"score\": \"<float>\"\n  },\n  {\n    \"language\": \"<string>\",\n    \"score\": \"<float>\"\n  }\n]",
+              "createdAt": "2026-10-22T02:00:12.000Z",
+              "updatedAt": "2026-10-22T02:00:12.000Z",
+              "uid": "35240-9685cced-4fe2-4491-9f27-41520ac0c5dd"
             },
             {
-              "id": "f9142394-eb84-4d7a-8455-f19b0964f94a",
-              "name": "Unauthorized — invalid or missing API key.",
+              "id": "45228ab3-edbe-4f95-bbb4-482e31d8d6a6",
+              "name": "Unauthorized \u2014 invalid or missing API key.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "detect"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Text to detect the language of. Must be a valid UTF-8 encoded string. Mandatory.",
-                        "type": "text/plain"
-                      },
-                      "key": "q",
-                      "value": "Hello world"
+                  "mode": "raw",
+                  "raw": "{\n  \"q\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
                     }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/detect",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "detect"
                   ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": \"Unauthorized\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T02:00:12.000Z",
+              "updatedAt": "2026-10-22T02:00:12.000Z",
+              "uid": "35240-45228ab3-edbe-4f95-bbb4-482e31d8d6a6"
             },
             {
-              "id": "12fe42c7-6f14-4531-aa30-82a9073746b4",
-              "name": "Unprocessable Entity — missing or invalid request parameters.",
+              "id": "f4d7b82e-d073-4899-8dda-6a73f8347749",
+              "name": "Unprocessable Entity \u2014 missing or invalid request parameters.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "detect"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Text to detect the language of. Must be a valid UTF-8 encoded string. Mandatory.",
-                        "type": "text/plain"
-                      },
-                      "key": "q",
-                      "value": "Hello world"
+                  "mode": "raw",
+                  "raw": "{\n  \"q\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
                     }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/detect",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "detect"
                   ]
                 }
               },
               "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
               "code": 422,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": \"Unauthorized\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T02:00:12.000Z",
+              "updatedAt": "2026-10-22T02:00:12.000Z",
+              "uid": "35240-f4d7b82e-d073-4899-8dda-6a73f8347749"
             }
           ],
-          "event": [],
+          "createdAt": "2026-10-22T02:00:12.000Z",
+          "updatedAt": "2026-10-22T02:00:12.000Z",
+          "uid": "35240-9a5d9d79-994d-4dea-96c8-fe3503f9956a"
+        }
+      ],
+      "id": "39e85bea-9561-42d9-a6a4-8753c9573fef",
+      "createdAt": "2026-10-22T02:00:12.000Z",
+      "updatedAt": "2026-10-22T02:00:12.000Z",
+      "uid": "35240-39e85bea-9561-42d9-a6a4-8753c9573fef"
+    },
+    {
+      "name": "detect-batch",
+      "item": [
+        {
+          "name": "Detect language of multiple texts in one request",
+          "id": "258d054e-2815-4c3d-814a-3ae0938045d8",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0f227a3f-7a35-4453-9279-65812df7b902",
-          "name": "Detect language of multiple texts in one request",
+          },
           "request": {
-            "name": "Detect language of multiple texts in one request",
-            "description": {
-              "content": "Analyzes multiple text strings in a single API call and returns an array of arrays, each containing language candidates for the corresponding input text. Batch detections are counted as separate requests (e.g., 3 texts = 3 requests toward your quota).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "detect-batch"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
+                "value": "application/json"
               },
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "q",
-                  "value": "<string>",
-                  "description": "(Required) Array of texts to detect languages for. Each element must be a valid UTF-8 encoded string. Mandatory."
-                },
-                {
-                  "disabled": false,
-                  "key": "q",
-                  "value": "<string>",
-                  "description": "(Required) Array of texts to detect languages for. Each element must be a valid UTF-8 encoded string. Mandatory."
+              "mode": "raw",
+              "raw": "{\n  \"q\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
                 }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/detect-batch",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "detect-batch"
               ]
-            }
+            },
+            "description": "Analyzes multiple text strings in a single API call and returns an array of arrays, each containing language candidates for the corresponding input text. Batch detections are counted as separate requests (e.g., 3 texts = 3 requests toward your quota)."
           },
           "response": [
             {
-              "id": "d16c3579-d54b-4299-9914-15a4eefc086a",
+              "id": "19c0cb1f-e645-4b19-b74d-7115fb39b452",
               "name": "Array of arrays of language detection candidates, one array per input text, in the same order as the input.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "detect-batch"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Array of texts to detect languages for. Each element must be a valid UTF-8 encoded string. Mandatory.",
-                        "type": "text/plain"
-                      },
-                      "key": "q",
-                      "value": "Hello world"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Array of texts to detect languages for. Each element must be a valid UTF-8 encoded string. Mandatory.",
-                        "type": "text/plain"
-                      },
-                      "key": "q",
-                      "value": "Dolce far niente"
+                  "mode": "raw",
+                  "raw": "{\n  \"q\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
                     }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/detect-batch",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "detect-batch"
                   ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "[\n  [\n    {\n      \"language\": \"en\",\n      \"score\": 0.9098\n    }\n  ],\n  [\n    {\n      \"language\": \"it\",\n      \"score\": 0.5074\n    }\n  ]\n]",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "[\n  [\n    {\n      \"language\": \"<string>\",\n      \"score\": \"<float>\"\n    },\n    {\n      \"language\": \"<string>\",\n      \"score\": \"<float>\"\n    }\n  ],\n  [\n    {\n      \"language\": \"<string>\",\n      \"score\": \"<float>\"\n    },\n    {\n      \"language\": \"<string>\",\n      \"score\": \"<float>\"\n    }\n  ]\n]",
+              "createdAt": "2026-10-22T02:00:12.000Z",
+              "updatedAt": "2026-10-22T02:00:12.000Z",
+              "uid": "35240-19c0cb1f-e645-4b19-b74d-7115fb39b452"
             },
             {
-              "id": "af64040e-1251-4ad0-8510-c9c9fe41ca13",
-              "name": "Unauthorized — invalid or missing API key.",
+              "id": "9d65aee6-20de-4159-9038-af80ef64dd48",
+              "name": "Unauthorized \u2014 invalid or missing API key.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "detect-batch"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Array of texts to detect languages for. Each element must be a valid UTF-8 encoded string. Mandatory.",
-                        "type": "text/plain"
-                      },
-                      "key": "q",
-                      "value": "Hello world"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Array of texts to detect languages for. Each element must be a valid UTF-8 encoded string. Mandatory.",
-                        "type": "text/plain"
-                      },
-                      "key": "q",
-                      "value": "Dolce far niente"
+                  "mode": "raw",
+                  "raw": "{\n  \"q\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
                     }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/detect-batch",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "detect-batch"
                   ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": \"Unauthorized\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T02:00:12.000Z",
+              "updatedAt": "2026-10-22T02:00:12.000Z",
+              "uid": "35240-9d65aee6-20de-4159-9038-af80ef64dd48"
             },
             {
-              "id": "8de8a86a-7af4-4f6a-a2b0-521aa444becf",
-              "name": "Unprocessable Entity — missing or invalid request parameters.",
+              "id": "e58e2e7b-b6cf-41e6-aeb1-53c6fe8916d6",
+              "name": "Unprocessable Entity \u2014 missing or invalid request parameters.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "detect-batch"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Array of texts to detect languages for. Each element must be a valid UTF-8 encoded string. Mandatory.",
-                        "type": "text/plain"
-                      },
-                      "key": "q",
-                      "value": "Hello world"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) Array of texts to detect languages for. Each element must be a valid UTF-8 encoded string. Mandatory.",
-                        "type": "text/plain"
-                      },
-                      "key": "q",
-                      "value": "Dolce far niente"
+                  "mode": "raw",
+                  "raw": "{\n  \"q\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
                     }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/detect-batch",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "detect-batch"
                   ]
                 }
               },
               "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
               "code": 422,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": \"Unauthorized\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T02:00:12.000Z",
+              "updatedAt": "2026-10-22T02:00:12.000Z",
+              "uid": "35240-e58e2e7b-b6cf-41e6-aeb1-53c6fe8916d6"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T02:00:12.000Z",
+          "updatedAt": "2026-10-22T02:00:12.000Z",
+          "uid": "35240-258d054e-2815-4c3d-814a-3ae0938045d8"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://ws.detectlanguage.com/v3",
-      "key": "baseUrl"
+      "id": "3c511153-99e5-4645-b198-358ea8d4f528",
+      "createdAt": "2026-10-22T02:00:12.000Z",
+      "updatedAt": "2026-10-22T02:00:12.000Z",
+      "uid": "35240-3c511153-99e5-4645-b198-358ea8d4f528"
     }
   ],
   "auth": {
@@ -494,17 +460,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "00c55ba7-fa4f-4647-b0d3-07efaff06514",
-    "name": "DetectLanguage Account Detection API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "DetectLanguage is a language detection REST API that analyzes text samples and returns the identified language along with a confidence score. Supporting 216 languages, the API enables developers to identify languages from brief phrases to full documents, with batch processing support for multiple texts in a single request.",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://ws.detectlanguage.com/v3"
     }
-  }
+  ]
 }

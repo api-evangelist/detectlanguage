@@ -1,101 +1,96 @@
 {
+  "info": {
+    "_postman_id": "21cc2d01-c753-4d61-b2bb-736aae6bf7b4",
+    "name": "DetectLanguage Languages API",
+    "description": "DetectLanguage is a language detection REST API that analyzes text samples and returns the identified language along with a confidence score. Supporting 216 languages, the API enables developers to identify languages from brief phrases to full documents, with batch processing support for multiple texts in a single request.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:00:17.000Z",
+    "updatedAt": "2026-10-22T02:00:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-21cc2d01-c753-4d61-b2bb-736aae6bf7b4"
+  },
   "item": [
     {
-      "id": "74398402-e4f9-4cff-81b5-a1dd76c820ac",
-      "name": "Languages",
-      "description": {
-        "content": "Retrieve the list of supported languages.",
-        "type": "text/plain"
-      },
+      "name": "languages",
       "item": [
         {
-          "id": "ee1f3d76-63a9-495e-8b8a-afbab946be90",
           "name": "List all supported languages",
+          "id": "1253c93c-d5aa-499b-97d0-751a0aee3089",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "List all supported languages",
-            "description": {
-              "content": "Returns an array of all 216 supported languages, each with a language code and full language name. Authentication is not required for this endpoint.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "languages"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/languages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "languages"
+              ]
+            },
+            "description": "Returns an array of all 216 supported languages, each with a language code and full language name. Authentication is not required for this endpoint."
           },
           "response": [
             {
-              "id": "5945d801-7b18-4917-9c28-72e15cc41d05",
+              "id": "04739cbf-ec06-410c-9926-e36e8ad8d0ca",
               "name": "Array of supported languages with codes and names.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "languages"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/languages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "languages"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "[\n  {\n    \"code\": \"aa\",\n    \"name\": \"Afar\"\n  },\n  {\n    \"code\": \"ab\",\n    \"name\": \"Abkhazian\"\n  },\n  {\n    \"code\": \"en\",\n    \"name\": \"English\"\n  },\n  {\n    \"code\": \"it\",\n    \"name\": \"Italian\"\n  },\n  {\n    \"code\": \"zh\",\n    \"name\": \"Chinese\"\n  }\n]",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "[\n  {\n    \"code\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-10-22T02:00:18.000Z",
+              "updatedAt": "2026-10-22T02:00:18.000Z",
+              "uid": "35240-04739cbf-ec06-410c-9926-e36e8ad8d0ca"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T02:00:18.000Z",
+          "updatedAt": "2026-10-22T02:00:18.000Z",
+          "uid": "35240-1253c93c-d5aa-499b-97d0-751a0aee3089"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://ws.detectlanguage.com/v3",
-      "key": "baseUrl"
+      "id": "85a9e21a-e60b-4f0a-8519-e6809ce129e2",
+      "createdAt": "2026-10-22T02:00:18.000Z",
+      "updatedAt": "2026-10-22T02:00:18.000Z",
+      "uid": "35240-85a9e21a-e60b-4f0a-8519-e6809ce129e2"
     }
   ],
   "auth": {
@@ -103,17 +98,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "bbcacf81-967a-4336-89db-ddf06b7f5d61",
-    "name": "DetectLanguage Account Languages API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "DetectLanguage is a language detection REST API that analyzes text samples and returns the identified language along with a confidence score. Supporting 216 languages, the API enables developers to identify languages from brief phrases to full documents, with batch processing support for multiple texts in a single request.",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://ws.detectlanguage.com/v3"
     }
-  }
+  ]
 }

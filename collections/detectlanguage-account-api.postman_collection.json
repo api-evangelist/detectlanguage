@@ -1,147 +1,150 @@
 {
+  "info": {
+    "_postman_id": "f1120306-a875-484e-84f2-6e0bce5c0ce5",
+    "name": "DetectLanguage Account API",
+    "description": "DetectLanguage is a language detection REST API that analyzes text samples and returns the identified language along with a confidence score. Supporting 216 languages, the API enables developers to identify languages from brief phrases to full documents, with batch processing support for multiple texts in a single request.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:00:01.000Z",
+    "updatedAt": "2026-10-22T02:00:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f1120306-a875-484e-84f2-6e0bce5c0ce5"
+  },
   "item": [
     {
-      "id": "ee9fe5cb-7c48-4bb1-8d7c-0111fc23bd01",
-      "name": "Account",
-      "description": {
-        "content": "Account status and usage information.",
-        "type": "text/plain"
-      },
+      "name": "account",
       "item": [
         {
-          "id": "6cf1e417-ba22-49de-957a-5b92ed7a93ec",
-          "name": "Get account usage status",
-          "request": {
-            "name": "Get account usage status",
-            "description": {
-              "content": "Returns current account usage statistics for the authenticated API key, including the number of requests sent today, bytes processed, plan details, daily limits, and account status.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "account",
-                "status"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "status",
+          "item": [
             {
-              "id": "79df8ae1-1b8a-499b-b204-f84ddc0e2173",
-              "name": "Account status and usage information.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "account",
-                    "status"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Get account usage status",
+              "id": "d64c40a6-1595-4c3a-8b8b-4c3645a4426f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"date\": \"2018-04-07\",\n  \"requests\": 1510,\n  \"bytes\": 19843,\n  \"plan\": \"\",\n  \"plan_expires\": null,\n  \"daily_requests_limit\": 0,\n  \"daily_bytes_limit\": 0,\n  \"status\": \"ACTIVE\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ec16626e-0f2e-4427-b0c9-c41aa9610eb6",
-              "name": "Unauthorized — invalid or missing API key.",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "account",
-                    "status"
-                  ],
+                  "raw": "{{baseUrl}}/account/status",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
+                  "path": [
+                    "account",
+                    "status"
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Returns current account usage statistics for the authenticated API key, including the number of requests sent today, bytes processed, plan details, daily limits, and account status."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "f02449a1-4ec2-4c63-ad2d-bba4a1820e13",
+                  "name": "Account status and usage information.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/account/status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "account",
+                        "status"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"date\": \"<date>\",\n  \"requests\": \"<integer>\",\n  \"bytes\": \"<integer>\",\n  \"plan\": \"<string>\",\n  \"plan_expires\": \"<date>\",\n  \"daily_requests_limit\": \"<integer>\",\n  \"daily_bytes_limit\": \"<integer>\",\n  \"status\": \"ACTIVE\"\n}",
+                  "createdAt": "2026-10-22T02:00:01.000Z",
+                  "updatedAt": "2026-10-22T02:00:01.000Z",
+                  "uid": "35240-f02449a1-4ec2-4c63-ad2d-bba4a1820e13"
+                },
+                {
+                  "id": "b1160b1f-d342-4dc0-980f-910dbebc85f6",
+                  "name": "Unauthorized \u2014 invalid or missing API key.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/account/status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "account",
+                        "status"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T02:00:01.000Z",
+                  "updatedAt": "2026-10-22T02:00:01.000Z",
+                  "uid": "35240-b1160b1f-d342-4dc0-980f-910dbebc85f6"
                 }
               ],
-              "body": "{\n  \"error\": \"Unauthorized\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T02:00:01.000Z",
+              "updatedAt": "2026-10-22T02:00:01.000Z",
+              "uid": "35240-d64c40a6-1595-4c3a-8b8b-4c3645a4426f"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "22867dea-f782-4d97-8d7a-7408e7a72be2",
+          "createdAt": "2026-10-22T02:00:01.000Z",
+          "updatedAt": "2026-10-22T02:00:01.000Z",
+          "uid": "35240-22867dea-f782-4d97-8d7a-7408e7a72be2"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://ws.detectlanguage.com/v3",
-      "key": "baseUrl"
+      "id": "35bcb5bf-6ce6-425d-99d7-cf6eb8ffe81a",
+      "createdAt": "2026-10-22T02:00:01.000Z",
+      "updatedAt": "2026-10-22T02:00:01.000Z",
+      "uid": "35240-35bcb5bf-6ce6-425d-99d7-cf6eb8ffe81a"
     }
   ],
   "auth": {
@@ -149,17 +152,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "b98aa929-10df-4ce2-bb40-248c5f30c934",
-    "name": "DetectLanguage Account API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "DetectLanguage is a language detection REST API that analyzes text samples and returns the identified language along with a confidence score. Supporting 216 languages, the API enables developers to identify languages from brief phrases to full documents, with batch processing support for multiple texts in a single request.",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://ws.detectlanguage.com/v3"
     }
-  }
+  ]
 }
