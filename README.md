@@ -64,46 +64,153 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-DetectLanguage is a language detection REST API that analyzes text samples and returns the identified language along with a confidence score. Supporting 216 languages, the API enables developers to identify languages from brief phrases to full documents, with batch processing support for multiple texts in a single request.
+DetectLanguage is a language detection REST API that analyzes text samples and returns the identified language along with a confidence score. Supporting 216 languages, the API enables developers to identify languages from brief phrases to full documents, with batch processing support for multiple texts in a single request. It offers SDKs for Ruby, Python, Node.js, Go, Java, PHP, and .NET, making integration straightforward across technology stacks.
 
-## Resources
+**Areas:** Language Detection · Natural Language Processing · Text Analysis · Machine Learning · Multilingual
+
+## DetectLanguage on APIs.io
+
+Everything profiled for DetectLanguage is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/detectlanguage/](https://apis.io/providers/detectlanguage/)** — or go straight to one of the APIs or properties below.
+
+### APIs (3)
+
+- [DetectLanguage Account API](https://apis.io/apis/detectlanguage/detectlanguage-account-api/) — Account status and usage information.
+- [DetectLanguage Detection API](https://apis.io/apis/detectlanguage/detectlanguage-detection-api/) — Language detection endpoints for single and batch text analysis.
+- [DetectLanguage Languages API](https://apis.io/apis/detectlanguage/detectlanguage-languages-api/) — Retrieve the list of supported languages.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Detectlanguage Agentic Access](https://apis.io/agentic-access/detectlanguage/detectlanguage-agentic-access/)
+
+#### JSON Schema (3)
+
+The data models the API reads and writes.
+
+- [Account Status](https://apis.io/schemas/detectlanguage/account-status/)
+- [Language](https://apis.io/schemas/detectlanguage/language/)
+- [Language Candidate](https://apis.io/schemas/detectlanguage/language-candidate/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [context Context](https://apis.io/jsonld/detectlanguage/context/)
+
+#### Examples (4)
+
+Example requests and responses.
+
+- [Account Status](https://apis.io/examples/detectlanguage/account-status/)
+- [Detect Batch](https://apis.io/examples/detectlanguage/detect-batch/)
+- [Detect Single](https://apis.io/examples/detectlanguage/detect-single/)
+- [Languages List](https://apis.io/examples/detectlanguage/languages-list/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [DetectLanguage Account API](https://apis.io/collections/detectlanguage/open-detectlanguage-account-api/)
+- [DetectLanguage Account Detection API](https://apis.io/collections/detectlanguage/open-detectlanguage-detection-api/)
+- [DetectLanguage Account Languages API](https://apis.io/collections/detectlanguage/open-detectlanguage-languages-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [DetectLanguage — jsonschema rules](https://apis.io/rules/detectlanguage/detectlanguage-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Detectlanguage Authentication](https://apis.io/security/detectlanguage/detectlanguage-authentication/)
+- [Detectlanguage Domain Security](https://apis.io/security/detectlanguage/detectlanguage-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Plans](https://apis.io/plans/detectlanguage/plans/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Rate Limits](https://apis.io/rate-limits/detectlanguage/rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Finops](https://apis.io/finops/detectlanguage/finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://detectlanguage.com)
 - [Documentation](https://detectlanguage.com/documentation/v3)
-- [Pricing / Plans](https://detectlanguage.com/plans)
-- [GitHub Organization](https://github.com/detectlanguage)
-- [Sign Up](https://detectlanguage.com/users/sign_up)
-- [Contact](https://detectlanguage.com/contact)
-- [Terms of Service](https://detectlanguage.com/terms)
-- [Privacy Policy](https://detectlanguage.com/privacy_policy)
+- [Pricing](https://detectlanguage.com/plans)
+- [Security](https://detectlanguage.com/documentation#security)
+- [Terms of service](https://detectlanguage.com/terms)
+- [Privacy policy](https://detectlanguage.com/privacy_policy)
+- [GitHub](https://github.com/detectlanguage)
 
-## API
+## API Evangelist rating
 
-Base URL: `https://ws.detectlanguage.com/v3`
+**Kin Score 38.1** — thin · rubric 0.24.0 · scored 2026-10-17
 
-Authentication: Bearer token — `Authorization: Bearer <your-api-key>`
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 58.5 |
+| Contract governance | 9.8 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 46.1 |
 
-Key endpoints:
+**Agent readiness 30.6** — agent-ready
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | /v3/detect | Detect language of a single text |
-| POST | /v3/detect-batch | Detect languages for multiple texts |
-| GET | /v3/account/status | Check current usage and limits |
-| GET | /v3/languages | List all supported languages |
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-## SDKs
+**Regulatory alignment 22.7** — Horizontal (data, software, accessibility, platform)
 
-Official client libraries are available for Ruby, Python, Node.js, Go, Java, PHP, and .NET via the [detectlanguage GitHub organization](https://github.com/detectlanguage).
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/detectlanguage/](https://apis.io/providers/detectlanguage/).
 
-## Plans
+## How this profile is made
 
-| Plan | Price | Requests/Day | Data/Day |
-|------|-------|--------------|----------|
-| Free | $0/mo | 1,000 | 1 MB |
-| Basic | $5/mo | 100,000 | 20 MB |
-| Plus | $15/mo | 1,000,000 | 200 MB |
-| Premium | $40/mo | 10,000,000 | 2 GB |
-| Premium 40M | $100/mo | 40,000,000 | 8 GB |
-| Premium 100M | $200/mo | 100,000,000 | 20 GB |
-| Custom | Contact | Custom | Custom |
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for DetectLanguage: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/detectlanguage/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
